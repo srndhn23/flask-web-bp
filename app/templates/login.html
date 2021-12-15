@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "includes/head.html" %}
+
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+				<div class="panel-heading text-center strong">LOG IN</div>
+				<div class="panel-body">
+					<form role="form" method="POST" action="">
+						{{ form.hidden_tag() }}
+						<fieldset>
+							<div class="form-group">
+								{% if form.username.errors %}
+									{{ form.username(class="form-control form-control-lg is-invalid") }}
+									<div class="invalid-feedback">
+										{% for error in form.username.errors %}
+											<span>{{ error }}</span>
+										{% endfor %}
+									</div>
+								{% else %}
+									{{ form.username(class="form-control form-control-lg") }}
+								{% endif %}
+								<!-- <input class="form-control" placeholder="username" name="username" type="username" autofocus=""> -->
+							</div>
+							<div class="form-group">
+								{% if form.password.errors %}
+									{{ form.password(class="form-control form-control-lg is-invalid") }}
+									<div class="invalid-feedback">
+										{% for error in form.password.errors %}
+											<span>{{ error }}</span>
+										{% endfor %}
+									</div>
+								{% else %}
+									{{ form.password(class="form-control form-control-lg") }}
+								{% endif %}
+								<!-- <input class="form-control" placeholder="Password" name="password" type="password" value=""> -->
+							</div>
+							<div class="form-check">
+								{{ form.remember(class="form-check-input") }}
+								{{ form.remember.label(class="form-check-label") }}
+							</div>
+							<!-- <div class="checkbox">
+								<label>
+									<input name="remember" type="checkbox" value="Remember Me">Remember Me
+								</label>
+							</div> -->
+							<!-- <a href="index.html" class="btn btn-primary">Login</a> -->
+							{{ form.submit(class="btn btn-primary btn-lg btn-block btn-outline-info") }}
+							<!-- <div>
+							<a href=" {{ url_for('index') }} " class="nav-link {% if index %} active {% endif %} btn btn-primary btn-lg btn-block">Sign In</a></div> -->
+							<div class="panel-body text-center">Or</div>
+							<div><a href=" {{ url_for('register') }} " class="nav-link {% if index %} active {% endif %} btn btn-primary btn-lg btn-block">Sign Up</a></div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.col-->
+	</div><!-- /.row -->
+
+	{% include "includes/scripts.html" %}
+
+</body>
+</html>
